@@ -1,4 +1,8 @@
+<!doctype html>
+<html lang="uk">
+<head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Марина Ковальчук</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -354,7 +358,6 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.35); }
 .c-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 7vw, 120px); align-items: start; }
 .c-left { display: flex; flex-direction: column; gap: 28px; position: sticky; top: calc(var(--nav-h) + 24px); }
 .c-left p { color: var(--deep-soft); max-width: 40ch; }
-.c-img { aspect-ratio: 4 / 3.6; max-width: 480px; border-radius: 999px 999px 0 0; }
 form { display: flex; flex-direction: column; gap: 30px; }
 .field { display: flex; flex-direction: column; gap: 6px; position: relative; }
 .field label, fieldset legend { color: var(--deep-soft); padding: 0; }
@@ -382,8 +385,7 @@ fieldset legend { margin-bottom: 12px; }
 .thanks.show { display: block; animation: fadeIn 1s ease forwards; }
 .thanks h3 { font-size: clamp(2.4rem, 5vw, 4.4rem); }
 .thanks p { color: var(--deep-soft); margin-top: 18px; }
-@media (max-width: 880px) { .c-grid { grid-template-columns: 1fr; } .c-left { position: static; } .two { grid-template-columns: 1fr; } .c-img { display: none; } }
-
+@media (max-width: 880px) { .c-grid { grid-template-columns: 1fr; } .c-left { position: static; } .two { grid-template-columns: 1fr; } 
 /* ---------- title-block footer ---------- */
 .tb { display: grid; grid-template-columns: 2.2fr 1.4fr 1.4fr; gap: clamp(24px, 4vw, 64px); border-top: 1px solid var(--line); padding-top: clamp(28px, 4vw, 48px); margin-top: clamp(40px, 6vw, 72px); }
 .tb > div { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
@@ -406,8 +408,13 @@ fieldset legend { margin-bottom: 12px; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
   .wb.on .bar { animation: none; transform: none; }
 }
+/* base reset */
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+[hidden] { display: none !important; }
 </style>
-
+</head>
+<body>
 <script>document.documentElement.classList.add('js');</script>
 <div class="loader" id="loader" aria-hidden="true">
   <div class="ld-center"><span class="ld-num" id="ldNum">0</span><small>%</small></div>
@@ -530,7 +537,7 @@ fieldset legend { margin-bottom: 12px; }
   </div>
 </section>
 <div class="preview" id="preview" aria-hidden="true">
-  <img src="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285627/prydumano-design-I8z6BX_hPBg-unsplash.webp" alt="" data-k="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285627/prydumano-design-I8z6BX_hPBg-unsplash.webp"><img src="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285342/prydumano-design-1Uw-a7Os5rk-unsplash.webp" alt="" data-k="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285342/prydumano-design-1Uw-a7Os5rk-unsplash.webp"><img src="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285896/prydumano-design-P8voQBX5WbA-unsplash.webp" alt="" data-k="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285896/prydumano-design-P8voQBX5WbA-unsplash.webp"><img src="img/3.jpg" alt="" data-k="img/3.jpg">
+  <img src="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285627/prydumano-design-I8z6BX_hPBg-unsplash.webp" alt="" data-k="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285627/prydumano-design-I8z6BX_hPBg-unsplash.webp"><img src="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285342/prydumano-design-1Uw-a7Os5rk-unsplash.webp" alt="" data-k="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285342/prydumano-design-1Uw-a7Os5rk-unsplash.webp"><img src="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285896/prydumano-design-P8voQBX5WbA-unsplash.webp" alt="" data-k="https://res.cloudinary.com/d2uxjkpy/image/upload/v1791285896/prydumano-design-P8voQBX5WbA-unsplash.webp">
 </div>
 
 <!-- ================= КЕЙС ================= -->
@@ -750,7 +757,6 @@ fieldset legend { margin-bottom: 12px; }
       <p class="mono eyebrow" style="margin-bottom:0">Почати проєкт</p>
       <h2 class="rv">Розкажіть про <em>свій проєкт</em></h2>
       <p>Запишіться на безкоштовну 20-хвилинну розмову. Обговоримо вашу ідею, і я підкажу, як можу допомогти.</p>
-      <div class="c-img par" data-speed=".05"><img src="img/3.jpg" alt="Робоча зона з двома кріслами та вбудованою підсвіткою" style="object-position:50% 60%"></div>
     </div>
 
     <div>
@@ -1181,3 +1187,5 @@ fieldset legend { margin-bottom: 12px; }
   });
 })();
 </script>
+</body>
+</html>
