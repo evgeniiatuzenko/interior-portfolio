@@ -415,10 +415,10 @@ body { margin: 0; }
 [hidden] { display: none !important; }
 
 /* ===== Кастомний курсор ===== */
-.cur-dot { position: fixed; left: 0; top: 0; width: 36px; height: 36px; margin: -18px 0 0 -18px; border-radius: 50%; border: 1.5px solid #fff; background: rgba(224, 205, 172, .45); -webkit-backdrop-filter: blur(1.5px); backdrop-filter: blur(1.5px); pointer-events: none; z-index: 99999; opacity: 0; transition: opacity .25s, width .3s cubic-bezier(.2,.7,.1,1), height .3s cubic-bezier(.2,.7,.1,1), margin .3s cubic-bezier(.2,.7,.1,1), background .3s; will-change: transform; box-shadow: 0 0 0 .5px rgba(32,28,24,.18); }
+.cur-dot { position: fixed; left: 0; top: 0; width: 36px; height: 36px; margin: -18px 0 0 -18px; border-radius: 50%; border: 1.5px solid #fff; background: rgba(188, 190, 186, .5); -webkit-backdrop-filter: blur(1.5px); backdrop-filter: blur(1.5px); pointer-events: none; z-index: 99999; opacity: 0; transition: opacity .25s, width .3s cubic-bezier(.2,.7,.1,1), height .3s cubic-bezier(.2,.7,.1,1), margin .3s cubic-bezier(.2,.7,.1,1), background .3s; will-change: transform; box-shadow: 0 0 0 .5px rgba(32,28,24,.18); }
 .cur-dot.on { opacity: 1; }
-.cur-dot.hov { width: 60px; height: 60px; margin: -30px 0 0 -30px; background: rgba(224, 205, 172, .28); }
-.cur-dot.down { width: 26px; height: 26px; margin: -13px 0 0 -13px; background: rgba(224, 205, 172, .7); }
+.cur-dot.hov { width: 60px; height: 60px; margin: -30px 0 0 -30px; background: rgba(188, 190, 186, .32); }
+.cur-dot.down { width: 26px; height: 26px; margin: -13px 0 0 -13px; background: rgba(176, 179, 175, .75); }
 @media (hover: hover) and (pointer: fine) { html.has-cur, html.has-cur * { cursor: none !important; } }
 @media (hover: none), (pointer: coarse) { .cur-dot { display: none; } }
 /* на ширині телефона курсору немає взагалі (для запису екрана в DevTools) */
