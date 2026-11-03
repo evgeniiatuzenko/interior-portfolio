@@ -413,6 +413,16 @@ fieldset legend { margin-bottom: 12px; }
 body { margin: 0; }
 @supports (overflow: clip) { body { overflow-x: clip; } }
 [hidden] { display: none !important; }
+
+/* ===== Кастомний курсор ===== */
+.cur-dot { position: fixed; left: 0; top: 0; width: 36px; height: 36px; margin: -18px 0 0 -18px; border-radius: 50%; border: 1.5px solid #fff; background: rgba(224, 205, 172, .45); -webkit-backdrop-filter: blur(1.5px); backdrop-filter: blur(1.5px); pointer-events: none; z-index: 99999; opacity: 0; transition: opacity .25s, width .3s cubic-bezier(.2,.7,.1,1), height .3s cubic-bezier(.2,.7,.1,1), margin .3s cubic-bezier(.2,.7,.1,1), background .3s; will-change: transform; box-shadow: 0 0 0 .5px rgba(32,28,24,.18); }
+.cur-dot.on { opacity: 1; }
+.cur-dot.hov { width: 60px; height: 60px; margin: -30px 0 0 -30px; background: rgba(224, 205, 172, .28); }
+.cur-dot.down { width: 26px; height: 26px; margin: -13px 0 0 -13px; background: rgba(224, 205, 172, .7); }
+@media (hover: hover) and (pointer: fine) { html.has-cur, html.has-cur * { cursor: none !important; } }
+@media (hover: none), (pointer: coarse) { .cur-dot { display: none; } }
+/* на ширині телефона курсору немає взагалі (для запису екрана в DevTools) */
+@media (max-width: 820px) { .cur-dot { display: none !important; } html, html * { cursor: none !important; } }
 </style>
 </head>
 <body>
@@ -1186,6 +1196,30 @@ body { margin: 0; }
     form.style.display = 'none';
     var t = $('#thanks'); t.classList.add('show'); t.focus();
   });
+})();
+</script>
+<script>
+(function () {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var d = document.createElement('div'); d.className = 'cur-dot'; d.setAttribute('aria-hidden', 'true'); document.body.appendChild(d);
+  var x = -100, y = -100, cx = x, cy = y, shown = false, root = document.documentElement;
+  var HOV = 'a, button, [role="button"], input, textarea, label, .prow, .chip, .wb, .qa button, summary';
+  addEventListener('mousemove', function (e) {
+    x = e.clientX; y = e.clientY;
+    if (!shown) { shown = true; cx = x; cy = y; root.classList.add('has-cur'); d.classList.add('on'); }
+    var t = e.target && e.target.closest ? e.target.closest(HOV) : null;
+    d.classList.toggle('hov', !!t);
+  }, { passive: true });
+  addEventListener('mousedown', function () { d.classList.add('down'); });
+  addEventListener('mouseup', function () { d.classList.remove('down'); });
+  document.addEventListener('mouseleave', function () { d.classList.remove('on'); });
+  document.addEventListener('mouseenter', function () { if (shown) d.classList.add('on'); });
+  (function loop() {
+    cx += (x - cx) * (RM ? 1 : .22); cy += (y - cy) * (RM ? 1 : .22);
+    d.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+    requestAnimationFrame(loop);
+  })();
 })();
 </script>
 </body>
